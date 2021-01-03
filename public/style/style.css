@@ -35,3 +35,19 @@
 .radius-2 {
   border-radius: 20px;
 }
+
+.card {
+  border-radius: 10px;
+}
+
+.card .card-image img {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  height: 150px;
+}
+
+.card .card-image .activator {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  height: 150px;
+}
