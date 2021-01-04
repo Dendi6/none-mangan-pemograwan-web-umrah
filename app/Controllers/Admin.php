@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\KotaModel;
-use App\Models\produkModel;
+use App\Models\ProdukModel;
 
 class Admin extends BaseController
 {
@@ -11,7 +11,7 @@ class Admin extends BaseController
     public function __construct()
     {
         $this->kotaModel = new KotaModel();
-        $this->produkModel = new produkModel();
+        $this->produkModel = new ProdukModel();
     }
 
     public function index()

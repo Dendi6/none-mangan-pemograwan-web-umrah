@@ -34,6 +34,12 @@
     </div>
 
     <li class="nav-item">
+        <a class="nav-link" href="#">
+            <i class="fas fa-fw fa-percent"></i>
+            <span>Promosi</span></a>
+    </li>
+
+    <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/kota'); ?>">
             <i class="fas fa-fw fa-city"></i>
             <span>Kota</span></a>
