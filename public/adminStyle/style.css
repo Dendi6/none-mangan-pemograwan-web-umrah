@@ -8,3 +8,11 @@
   outline: none;
   border: none;
 }
+
+table tr td img {
+  height: 100px;
+}
+
+.table tbody tr td {
+  vertical-align: middle;
+}

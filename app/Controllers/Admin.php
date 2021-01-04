@@ -3,13 +3,15 @@
 namespace App\Controllers;
 
 use App\Models\KotaModel;
+use App\Models\produkModel;
 
 class Admin extends BaseController
 {
-    protected $kotaModel;
+    protected $kotaModel, $produkModel;
     public function __construct()
     {
         $this->kotaModel = new KotaModel();
+        $this->produkModel = new produkModel();
     }
 
     public function index()
@@ -75,10 +77,40 @@ class Admin extends BaseController
     public function produk()
     {
         $data = [
-            'title' => 'Produk'
+            'title' => 'Produk',
+            'kota' => $this->kotaModel->findAll(),
+            'produk' => $this->produkModel->findAll()
         ];
 
         return view('admin/produk/index', $data);
+    }
+    public function saveProduk()
+    {
+        //ambil gambar
+        $fileSampul = $this->request->getFile('sampul');
+
+        //apakah ada file ?
+        if ($fileSampul->getError() == 4) {
+            $namaSampul = 'default.png';
+        } else {
+            //generate nama sampul
+            $namaSampul = $fileSampul->getRandomName();
+
+            //pindahkan file kefolder img
+            $fileSampul->move('images/produk/', $namaSampul);
+        }
+
+        $this->produkModel->save([
+            'sampul' => $namaSampul,
+            'nama_produk' => $this->request->getVar('nama'),
+            'deskripsi' => $this->request->getVar('deskripsi'),
+            'kota_asal' => $this->request->getVar('kota'),
+            'harga' => $this->request->getVar('harga')
+        ]);
+
+        session()->setFlashdata('pesan', 'Produk Berhasil di simpan');
+
+        return redirect()->to('/admin/produk');
     }
     //akhir fungsi produck
 }
