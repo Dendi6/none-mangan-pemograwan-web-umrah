@@ -2,7 +2,7 @@
 
 <?= $this->section('content'); ?>
 
-<div class="card mt-5">
+<div class="card mt-4">
     <div class="card-body">
         asdhkasdh
     </div>

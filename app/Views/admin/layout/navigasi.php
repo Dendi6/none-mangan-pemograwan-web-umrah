@@ -1,6 +1,6 @@
 <style>
     .bg-gradient-primary {
-        background: #ff8400;
+        background: #63a541;
     }
 </style>
 
@@ -12,7 +12,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Note<sup>2020</sup></div>
+        <div class="sidebar-brand-text mx-3">NONE<sup>2020</sup></div>
     </a>
 
     <!-- Divider -->
@@ -33,16 +33,22 @@
         Interface
     </div>
 
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/kota'); ?>">
+            <i class="fas fa-fw fa-city"></i>
+            <span>Kota</span></a>
+    </li>
+
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Tiket</span>
+            <span>Produk</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">List Tiket</a>
-                <a class="collapse-item" href="#">List Kota</a>
+                <a class="collapse-item" href="#">List Tanjungpinang</a>
+                <a class="collapse-item" href="#">List Batam</a>
             </div>
         </div>
     </li>
@@ -50,7 +56,7 @@
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-fw fa-shopping-cart"></i>
             <span>Pembayaran</span></a>
     </li>
 
