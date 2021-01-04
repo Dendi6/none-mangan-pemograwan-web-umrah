@@ -112,5 +112,21 @@ class Admin extends BaseController
 
         return redirect()->to('/admin/produk');
     }
+    public function deleteProduk($id)
+    {
+        //cari gambar
+        $produk = $this->produkModel->find($id);
+
+        //cek jik gambar default
+        if ($produk['sampul'] != "default.jpg") {
+            //hapus gambar
+            unlink('images/produk/' . $produk['sampul']);
+        }
+        $this->produkModel->delete($id);
+
+        session()->setFlashdata('delete', 'Produk berhasil di hapus');
+
+        return redirect()->to('/admin/produk');
+    }
     //akhir fungsi produck
 }

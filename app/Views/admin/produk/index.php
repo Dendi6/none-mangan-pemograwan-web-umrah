@@ -56,7 +56,7 @@
                             <a href="#" class="btn btn-success">
                                 <i class="fas fa-edit fa-cog"></i>
                             </a>
-                            <a href="#" class="btn btn-danger">
+                            <a href="<?= base_url('admin/deleteProduk/' . $p['id']); ?>" class="btn btn-danger">
                                 <i class="fas fa-trash-alt fa-cog"></i>
                             </a>
                         </td>
