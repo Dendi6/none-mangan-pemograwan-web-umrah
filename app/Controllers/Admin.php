@@ -41,5 +41,33 @@ class Admin extends BaseController
 
         return redirect()->to('/admin/kota');
     }
+    public function deletekota($id_kota)
+    {
+        $this->kotaModel->delete($id_kota);
+
+        session()->setFlashdata('delete', 'Data kota sudah di hapus');
+
+        return redirect()->to('/admin/kota');
+    }
+    public function editKota($id_kota)
+    {
+        $data = [
+            'title' => 'Edit Kota',
+            'kota' => $this->kotaModel->cari($id_kota)
+        ];
+
+        return view('/admin/kota/edit', $data);
+    }
+    public function updateKota($id_kota)
+    {
+        $this->kotaModel->save([
+            'id_kota' => $id_kota,
+            'nama_kota' => $this->request->getVar('nama_kota')
+        ]);
+
+        session()->setFlashdata('pesan', 'Kota Berhasil di Update');
+
+        return redirect()->to('/admin/kota');
+    }
     //akhir daftar fungsi menu kota
 }

@@ -17,6 +17,11 @@
         <?= session()->getFlashdata('pesan'); ?>
     </div>
 <?php endif; ?>
+<?php if (session()->getFlashdata('delete')) : ?>
+    <div class="alert alert-danger" role="alert">
+        <?= session()->getFlashdata('delete'); ?>
+    </div>
+<?php endif; ?>
 
 <div class="card">
     <div class="card-body">
@@ -39,7 +44,14 @@
                     <tr>
                         <td><?= $i++; ?></td>
                         <td><?= $k['nama_kota']; ?></td>
-                        <td>aksi</td>
+                        <td>
+                            <a href="<?= base_url('admin/editKota/' . $k['id_kota']); ?>" class="btn btn-success">
+                                <i class="fas fa-edit fa-cog"></i>
+                            </a>
+                            <a href="<?= base_url('admin/deletekota/' . $k['id_kota']); ?>" class="btn btn-danger">
+                                <i class="fas fa-trash-alt fa-cog"></i>
+                            </a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
