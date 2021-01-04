@@ -70,4 +70,15 @@ class Admin extends BaseController
         return redirect()->to('/admin/kota');
     }
     //akhir daftar fungsi menu kota
+
+    //fungsi produck
+    public function produk()
+    {
+        $data = [
+            'title' => 'Produk'
+        ];
+
+        return view('admin/produk/index', $data);
+    }
+    //akhir fungsi produck
 }

@@ -1,6 +1,7 @@
 <?= $this->extend('admin/layout/index'); ?>
 
 <?= $this->section('content'); ?>
+
 <div class="card mt-4">
     <div class="card-body">
         <form action="<?= base_url('admin/updateKota/' . $kota['id_kota']); ?>" method="POST">
