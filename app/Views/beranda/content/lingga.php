@@ -1,7 +1,7 @@
 <div class="container mt-2">
-    <?php if ($batam != null) : ?>
+    <?php if ($lingga != null) : ?>
         <div class="row">
-            <?php foreach ($batam as $tj) : ?>
+            <?php foreach ($lingga as $tj) : ?>
                 <div class="col s12 m4">
                     <div class="card z-depth-3">
                         <div class="card-image waves-effect waves-block waves-light">
@@ -23,7 +23,7 @@
             <?php endforeach; ?>
         </div>
     <?php endif; ?>
-    <?php if ($batam == null) : ?>
+    <?php if ($lingga == null) : ?>
         <div class="container">
             <div class="container">
                 <img src="/images/empty.svg" width="100%" alt="empty">

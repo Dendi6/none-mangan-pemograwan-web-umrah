@@ -22,10 +22,20 @@ class Home extends BaseController
 		$query = $builder->get();
 		$tanjungpinang = $query->getResultArray();
 
+		$builder->where('kota_asal', 2);
+		$query = $builder->get();
+		$batam = $query->getResultArray();
+
+		$builder->where('kota_asal', 3);
+		$query = $builder->get();
+		$lingga = $query->getResultArray();
+
 		$data = [
 			'title' => 'None Dendi',
 			'kota' => $this->kotaModel->findAll(),
-			'tanjungpinang' => $tanjungpinang
+			'tanjungpinang' => $tanjungpinang,
+			'batam' => $batam,
+			'lingga' => $lingga
 		];
 
 		return view('beranda/index', $data);
