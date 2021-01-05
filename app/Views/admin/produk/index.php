@@ -53,7 +53,7 @@
                         <td><?= $p['nama_produk']; ?></td>
                         <td>Rp. <?= $p['harga']; ?></td>
                         <td>
-                            <a href="#" class="btn btn-success">
+                            <a href="<?= base_url('admin/editProduk/' . $p['id']); ?>" class="btn btn-success">
                                 <i class="fas fa-edit fa-cog"></i>
                             </a>
                             <a href="<?= base_url('admin/deleteProduk/' . $p['id']); ?>" class="btn btn-danger">

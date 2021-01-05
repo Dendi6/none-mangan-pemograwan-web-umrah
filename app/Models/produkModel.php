@@ -12,4 +12,13 @@ class ProdukModel extends Model
     protected $allowedFields = ['sampul', 'nama_produk', 'deskripsi', 'kota_asal', 'harga'];
 
     protected $useTimestamps = true;
+
+    public function cari($id)
+    {
+        if ($id == false) {
+            return $this->findAll();
+        }
+
+        return $this->where(['id' => $id])->first();
+    }
 }

@@ -128,5 +128,15 @@ class Admin extends BaseController
 
         return redirect()->to('/admin/produk');
     }
+    public function editProduk($id)
+    {
+        // dd($this->produkModel->cari($id));
+        $data = [
+            'title' => 'Edit Produk',
+            'produk' => $this->produkModel->cari($id)
+        ];
+
+        return view('admin/produk/edit', $data);
+    }
     //akhir fungsi produck
 }
