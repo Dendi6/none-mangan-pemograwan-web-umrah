@@ -31,7 +31,12 @@
     <div class="container nav-wrapper">
         <a href="<?= base_url(); ?>" class="brand-logo left bold">None</a>
         <ul class="right">
-            <li><a href="#"><i class="material-icons">favorite_border</i></a></li>
+            <?php if (logged_in()) :  ?>
+                <li><a href="<?= base_url('favorite/' . user()->id); ?>"><i class="material-icons">favorite_border</i></a></li>
+            <?php else : ?>
+                <li><a href="<?= base_url('/login'); ?>"><i class="material-icons">favorite_border</i></a></li>
+            <?php endif; ?>
+
             <li><a href="#"><i class="material-icons">add_shopping_cart</i></a></li>
             <?php if (logged_in()) :  ?>
                 <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons">account_circle</i></a></li>

@@ -9,7 +9,7 @@ class ProdukModel extends Model
     protected $table      = 'produk';
     protected $primaryKey = 'id';
 
-    protected $allowedFields = ['sampul', 'nama_produk', 'deskripsi', 'kota_asal', 'harga'];
+    protected $allowedFields = ['sampul', 'nama_produk', 'deskripsi', 'jumlah_suka', 'kota_asal', 'harga'];
 
     protected $useTimestamps = true;
 
