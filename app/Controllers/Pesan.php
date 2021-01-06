@@ -2,24 +2,36 @@
 
 namespace App\Controllers;
 
+use App\Models\PembayaranModel;
 use App\Models\ProdukModel;
 use App\Models\TransaksiModel;
 
 class Pesan extends BaseController
 {
-    protected $produkModel, $transaksiModel;
+    protected $produkModel, $transaksiModel, $pembayaranModel;
     protected $session;
     public function __construct()
     {
         $this->session = \Config\Services::session();
         $this->produkModel = new ProdukModel();
         $this->transaksiModel = new TransaksiModel();
+        $this->pembayaranModel = new PembayaranModel();
     }
 
-    public function index()
+    public function index($id)
     {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('transaksi');
+
+        $builder->select('key, nama_produk, jumlah_pesanan, status');
+        $builder->join('produk', 'produk.id = transaksi.id_produk');
+        $builder->where('id_user', $id);
+        $query = $builder->get();
+        $transaksi = $query->getResultArray();
+
         $data = [
-            'title' => 'Pesan'
+            'title' => 'Pesan',
+            'transaksi' => $transaksi
         ];
 
         return view('beranda/pesan/index', $data);
@@ -33,7 +45,7 @@ class Pesan extends BaseController
 
         return view('beranda/pesan/jumlah', $data);
     }
-    public function saveTransaksi($id)
+    public function saveTransaksi()
     {
         //helper text
         helper('text');
@@ -65,5 +77,29 @@ class Pesan extends BaseController
         ];
 
         return view('beranda/pesan/pembayaran', $data);
+    }
+    public function savePembayaran()
+    {
+        //ambil gambar
+        $fileSampul = $this->request->getFile('sampul');
+
+        //apakah ada file ?
+        if ($fileSampul->getError() == 4) {
+            $namaSampul = 'default.jpg';
+        } else {
+            //generate nama sampul
+            $namaSampul = $fileSampul->getRandomName();
+
+            //pindahkan file kefolder img
+            $fileSampul->move('images/pembayaran/', $namaSampul);
+        }
+
+        $this->pembayaranModel->save([
+            'bukti' => $namaSampul,
+            'nama' => $this->request->getVar('nama'),
+            'key' => $this->request->getVar('key')
+        ]);
+
+        return redirect()->to('/');
     }
 }

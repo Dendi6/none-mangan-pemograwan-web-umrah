@@ -29,13 +29,33 @@
 </div>
 
 <div id="modal1" class="modal">
-    <div class="modal-content">
-        <h4>Modal Header</h4>
-        <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
+    <form action="<?= base_url('pesan/savePembayaran'); ?>" method="POST" enctype="multipart/form-data">
+        <?= csrf_field(); ?>
+        <!-- hidden input  -->
+        <input type="hidden" name="key" value="<?= $transaksi['key']; ?>">\
+        <!-- end hidden input  -->
+
+        <div class="modal-content">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="nama" type="text" name="nama" class="validate">
+                    <label for="nama">Nama pengirim</label>
+                </div>
+            </div>
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>File</span>
+                    <input type="file" multiple name="sampul">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Upload Bukti Pembayaran Berupa Foto..">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="modal-close waves-effect waves-green btn-flat">Kirim</a>
+        </div>
+    </form>
 </div>
 
 <script>
