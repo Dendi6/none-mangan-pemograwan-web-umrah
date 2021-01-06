@@ -9,8 +9,8 @@ use App\Controllers\Home;
 <div class="container">
     <div class="card">
         <div class="card-content">
-            <p>Oleh oleh yang aku suka :</p>
-            <table>
+            <p class="mt-2">Oleh oleh yang aku suka :</p>
+            <table class="striped">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -20,14 +20,27 @@ use App\Controllers\Home;
                 </thead>
 
                 <tbody>
-                    <?php $i = 1; ?>
-                    <?php foreach ($favorite as $f) : ?>
+                    <?php if ($favorite != null) : ?>
+                        <?php $i = 1; ?>
+                        <?php foreach ($favorite as $f) : ?>
+                            <tr>
+                                <td><?= $i++; ?></td>
+                                <th><?= $f['nama_produk']; ?></th>
+                                <td><?= $f['created']; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    <?php if ($favorite == null) : ?>
                         <tr>
-                            <td><?= $i++; ?></td>
-                            <th><?= $f['nama_produk']; ?></th>
-                            <td><?= $f['created']; ?></td>
+                            <td colspan="3">
+                                <div class="container">
+                                    <div class="container">
+                                        <img src="/images/empty.svg" width="100%" alt="empty">
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
-                    <?php endforeach; ?>
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>

@@ -34,6 +34,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 
 $routes->get('/favorite/(:num)', 'Favorite::index/$1');
+$routes->get('/pesan/(:num)', 'Pesan::index/$1');
 
 //admin akses
 $routes->get('/Admin', 'Admin::index', ['filter' => 'permission:admin'], ['filter' => 'permission:user']);

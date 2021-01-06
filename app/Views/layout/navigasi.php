@@ -37,7 +37,7 @@
                 <li><a href="<?= base_url('/login'); ?>"><i class="material-icons">favorite_border</i></a></li>
             <?php endif; ?>
 
-            <li><a href="#"><i class="material-icons">add_shopping_cart</i></a></li>
+            <li><a href="<?= base_url('pesan'); ?>"><i class="material-icons">add_shopping_cart</i></a></li>
             <?php if (logged_in()) :  ?>
                 <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons">account_circle</i></a></li>
             <?php else : ?>
