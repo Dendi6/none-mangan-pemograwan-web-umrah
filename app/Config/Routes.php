@@ -38,7 +38,7 @@ $routes->get('/pesan/(:num)', 'Pesan::index/$1');
 
 //admin akses
 $routes->get('/Admin', 'Admin::index', ['filter' => 'permission:admin'], ['filter' => 'permission:user']);
-
+$routes->get('/Admin/index', 'Admin::index', ['filter' => 'permission:admin'], ['filter' => 'permission:user']);
 /**
  * --------------------------------------------------------------------
  * Additional Routing

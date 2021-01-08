@@ -13,6 +13,25 @@ class ProdukModel extends Model
 
     protected $useTimestamps = true;
 
+    public function kotaAsal($id_kota)
+    {
+        $this->where('kota_asal', $id_kota);
+        $query = $this->get();
+        $produk = $query->getResultArray();
+
+        return $produk;
+    }
+
+    public function semua()
+    {
+        $this->join('kota', 'kota.id_kota = produk.kota_asal');
+        $this->orderBy('kota_asal', 'ASC');
+        $query = $this->get();
+        $produk = $query->getResultArray();
+
+        return $produk;
+    }
+
     public function cari($id)
     {
         if ($id == false) {

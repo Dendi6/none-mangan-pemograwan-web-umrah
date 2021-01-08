@@ -32,7 +32,8 @@
     <form action="<?= base_url('pesan/savePembayaran'); ?>" method="POST" enctype="multipart/form-data">
         <?= csrf_field(); ?>
         <!-- hidden input  -->
-        <input type="hidden" name="key" value="<?= $transaksi['key']; ?>">\
+        <input type="hidden" name="key" value="<?= $transaksi['key']; ?>">
+        <input type="hidden" name="status" value="diproses">
         <!-- end hidden input  -->
 
         <div class="modal-content">

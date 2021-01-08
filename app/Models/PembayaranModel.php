@@ -9,7 +9,7 @@ class PembayaranModel extends Model
     protected $table      = 'pembayaran';
     protected $primaryKey = 'id';
 
-    protected $allowedFields = ['key', 'nama', 'bukti'];
+    protected $allowedFields = ['key', 'nama', 'bukti', 'status'];
 
     protected $useTimestamps = true;
 }

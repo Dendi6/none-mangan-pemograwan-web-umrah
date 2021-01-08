@@ -20,18 +20,10 @@ class Pesan extends BaseController
 
     public function index($id)
     {
-        $db      = \Config\Database::connect();
-        $builder = $db->table('transaksi');
-
-        $builder->select('key, nama_produk, jumlah_pesanan, status');
-        $builder->join('produk', 'produk.id = transaksi.id_produk');
-        $builder->where('id_user', $id);
-        $query = $builder->get();
-        $transaksi = $query->getResultArray();
 
         $data = [
             'title' => 'Pesan',
-            'transaksi' => $transaksi
+            'transaksi' => $this->transaksiModel->transaksi($id)
         ];
 
         return view('beranda/pesan/index', $data);
@@ -63,12 +55,13 @@ class Pesan extends BaseController
             'id_produk' => $this->request->getVar('id_produk'),
             'id_user' => $user_id,
             'jumlah_pesanan' => $jumlah_pesanan,
-            'harga_total' => $harga_total,
-            'status' => $this->request->getVar('status')
+            'harga_total' => $harga_total
         ]);
 
         return redirect()->to('/pesan/pembayaran/' . $key);
     }
+
+    //fungsi pembayaran
     public function pembayaran($key)
     {
         $data = [
@@ -97,7 +90,8 @@ class Pesan extends BaseController
         $this->pembayaranModel->save([
             'bukti' => $namaSampul,
             'nama' => $this->request->getVar('nama'),
-            'key' => $this->request->getVar('key')
+            'key' => $this->request->getVar('key'),
+            'status' => $this->request->getVar('status')
         ]);
 
         return redirect()->to('/');

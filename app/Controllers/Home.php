@@ -15,20 +15,9 @@ class Home extends BaseController
 	}
 	public function index()
 	{
-		$db      = \Config\Database::connect();
-		$builder = $db->table('produk');
-
-		$builder->where('kota_asal', 1);
-		$query = $builder->get();
-		$tanjungpinang = $query->getResultArray();
-
-		$builder->where('kota_asal', 2);
-		$query = $builder->get();
-		$batam = $query->getResultArray();
-
-		$builder->where('kota_asal', 3);
-		$query = $builder->get();
-		$lingga = $query->getResultArray();
+		$tanjungpinang = $this->produkModel->kotaAsal(1);
+		$batam = $this->produkModel->kotaAsal(2);
+		$lingga = $this->produkModel->kotaAsal(3);
 
 		$data = [
 			'title' => 'None Dendi',

@@ -16,18 +16,9 @@ class Favorite extends BaseController
 
     public function index($id)
     {
-        $db      = \Config\Database::connect();
-        $builder = $db->table('favorite');
-
-        $builder->select('nama_produk, favorite.created_at as created');
-        $builder->join('produk', 'produk.id = favorite.id_produk');
-        $builder->where('id_user', $id);
-        $query = $builder->get();
-        $favorite = $query->getResultArray();
-
         $data = [
             'title' => 'Favorite',
-            'favorite' => $favorite
+            'favorite' => $this->favoriteModel->favorite($id)
         ];
 
         return view('beranda/favorite/index', $data);

@@ -61,7 +61,7 @@
 
     <!-- Nav Item - pembayaran -->
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="<?= base_url('admin/pembayaran'); ?>">
             <i class="fas fa-fw fa-shopping-cart"></i>
             <span>Pembayaran</span></a>
     </li>

@@ -49,8 +49,8 @@
                         <td>
                             <img src="/images/produk/<?= $p['sampul']; ?>" alt="<?= $p['nama_produk']; ?>">
                         </td>
-                        <td><?= $p['kota_asal']; ?></td>
-                        <td><?= $p['nama_produk']; ?></td>
+                        <td><?= $p['nama_kota']; ?></td>
+                        <td><b><?= $p['nama_produk']; ?></b></td>
                         <td>Rp. <?= $p['harga']; ?></td>
                         <td>
                             <a href="<?= base_url('admin/editProduk/' . $p['id']); ?>" class="btn btn-success">

@@ -3,15 +3,17 @@
 namespace App\Controllers;
 
 use App\Models\KotaModel;
+use App\Models\PembayaranModel;
 use App\Models\ProdukModel;
 
 class Admin extends BaseController
 {
-    protected $kotaModel, $produkModel;
+    protected $kotaModel, $produkModel, $pembayaranModel;
     public function __construct()
     {
         $this->kotaModel = new KotaModel();
         $this->produkModel = new ProdukModel();
+        $this->pembayaranModel = new PembayaranModel();
     }
 
     public function index()
@@ -79,7 +81,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Produk',
             'kota' => $this->kotaModel->findAll(),
-            'produk' => $this->produkModel->findAll()
+            'produk' => $this->produkModel->semua()
         ];
 
         return view('admin/produk/index', $data);
@@ -139,4 +141,15 @@ class Admin extends BaseController
         return view('admin/produk/edit', $data);
     }
     //akhir fungsi produck
+
+    //awal fungsi pembayaran
+    public function pembayaran()
+    {
+        $data = [
+            'title' => 'Admin Pembayaran',
+            'pembayaran' => $this->pembayaranModel->findAll()
+        ];
+
+        return view('admin/pembayaran/index', $data);
+    }
 }

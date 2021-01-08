@@ -24,7 +24,6 @@
                     <input type="hidden" name="id_user" value="<?= user()->id; ?>">
                     <input type="hidden" name="id_produk" value="<?= $produk['id']; ?>">
                     <input type="hidden" name="harga" value="<?= $produk['harga']; ?>">
-                    <input type="hidden" name="status" value="diproses">
                     <!-- end hidden input  -->
 
                     <div class="input-field col s12">
