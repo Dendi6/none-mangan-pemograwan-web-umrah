@@ -26,14 +26,14 @@
                                 <th><?= $tr['nama_produk']; ?></th>
                                 <td><?= $tr['jumlah_pesanan']; ?></td>
                                 <td>
-                                    <?= $tr['status']; ?>
+                                    <span class="badge <?= ($tr['status'] == 'dikirim') ? 'green' : 'orange' ?> new" data-badge-caption="<?= $tr['status']; ?>"></span>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>
                     <?php if ($transaksi == null) : ?>
                         <tr>
-                            <td colspan="5">
+                            <td colspan=" 5">
                                 <div class="container">
                                     <div class="container">
                                         <img src="/images/empty.svg" width="100%" alt="empty">

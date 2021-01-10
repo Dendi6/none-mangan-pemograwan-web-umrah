@@ -24,8 +24,11 @@ class TransaksiModel extends Model
     }
     public function transaksi($id)
     {
+        $this->select('transaksi.key as key, nama_produk, jumlah_pesanan, status, transaksi.created_at as created');
         $this->join('produk', 'produk.id = transaksi.id_produk');
+        $this->join('pembayaran', 'pembayaran.key = transaksi.key');
         $this->where('id_user', $id);
+        $this->orderBy('created', 'DESC');
         $query = $this->get();
         $transaksi = $query->getResultArray();
 

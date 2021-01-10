@@ -147,9 +147,18 @@ class Admin extends BaseController
     {
         $data = [
             'title' => 'Admin Pembayaran',
-            'pembayaran' => $this->pembayaranModel->findAll()
+            'pembayaran' => $this->pembayaranModel->pembayaran()
         ];
 
         return view('admin/pembayaran/index', $data);
+    }
+    public function sendEmail($id)
+    {
+        $this->pembayaranModel->save([
+            'id' => $id,
+            'status' => 'dikirim'
+        ]);
+
+        return redirect()->to('/admin/pembayaran');
     }
 }

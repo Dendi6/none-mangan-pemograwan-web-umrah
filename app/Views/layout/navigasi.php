@@ -19,7 +19,7 @@
 </style>
 <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
-    <li><a href="#">Profil</a></li>
+    <li><a href="<?= base_url('profil'); ?>">Profil</a></li>
     <?php if (in_groups('admin')) : ?>
         <li><a href="<?= base_url('admin'); ?>">Admin</a></li>
     <?php endif; ?>

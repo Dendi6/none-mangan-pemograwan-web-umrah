@@ -18,6 +18,8 @@
                         <form class="user" action="<?= route_to('register') ?>" method="post">
                             <?= csrf_field() ?>
 
+                            <input type="hidden" name="sampul" value="default.jpg">
+
                             <div class="form-group">
                                 <input type="email" class="form-control form-control-user <?php if (session('errors.email')) : ?>is-invalid<?php endif ?>" name="email" id="exampleInputEmail" placeholder="<?= lang('Auth.email') ?>" value="<?= old('email') ?>">
                             </div>
