@@ -17,9 +17,9 @@
         <?= session()->getFlashdata('pesan'); ?>
     </div>
 <?php endif; ?>
-<?php if (session()->getFlashdata('delete')) : ?>
+<?php if (session()->getFlashdata('error')) : ?>
     <div class="alert alert-danger" role="alert">
-        <?= session()->getFlashdata('delete'); ?>
+        <?= session()->getFlashdata('error'); ?>
     </div>
 <?php endif; ?>
 
@@ -50,7 +50,7 @@
                             <span class="badge badge-<?= ($p['status'] == 'dikirim') ? 'success' : 'warning' ?>"><?= $p['status']; ?></span>
                         </td>
                         <td>
-                            <a href="<?= base_url('admin/sendEmail/' . $p['id']); ?>" class="btn btn-<?= ($p['status'] == 'dikirim') ? 'secondary' : 'success' ?> <?= ($p['status'] == 'dikirim') ? 'disabled' : '' ?>">
+                            <a href="<?= base_url('admin/sendEmail/' . $p['id'] . '/' . $p['key']); ?>" class="btn btn-<?= ($p['status'] == 'dikirim') ? 'secondary' : 'success' ?> <?= ($p['status'] == 'dikirim') ? 'disabled' : '' ?>">
                                 Konfirmasi
                             </a>
                         </td>

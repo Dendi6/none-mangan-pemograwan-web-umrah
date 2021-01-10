@@ -5,15 +5,20 @@ namespace App\Controllers;
 use App\Models\KotaModel;
 use App\Models\PembayaranModel;
 use App\Models\ProdukModel;
+use App\Models\TransaksiModel;
+use Myth\Auth\Models\UserModel;
 
 class Admin extends BaseController
 {
-    protected $kotaModel, $produkModel, $pembayaranModel;
+    protected $kotaModel, $produkModel, $pembayaranModel, $userModel, $tanskasiModel;
     public function __construct()
     {
         $this->kotaModel = new KotaModel();
         $this->produkModel = new ProdukModel();
         $this->pembayaranModel = new PembayaranModel();
+        $this->transaksiModel = new TransaksiModel();
+        $this->userModel = new UserModel();
+        $this->email = \Config\Services::email();
     }
 
     public function index()
@@ -152,13 +157,36 @@ class Admin extends BaseController
 
         return view('admin/pembayaran/index', $data);
     }
-    public function sendEmail($id)
+    public function sendEmail($id, $key)
     {
-        $this->pembayaranModel->save([
-            'id' => $id,
-            'status' => 'dikirim'
-        ]);
+        $transaksi = $this->transaksiModel->cari($key);
+        $user = $this->userModel->find($transaksi['id_user']);
 
-        return redirect()->to('/admin/pembayaran');
+        // $this->email->setFrom('none2021.umrah@gmail.com', 'None');
+        $this->email->setTo($user->email);
+        $this->email->setSubject('Transaksi ' . $user->username);
+
+        $this->email->setMessage('<p>YTH ' . $user->username . '</p><br>
+        
+        Transaksi anda dengan key <i><b>' . $transaksi['key'] . '</b></i> Telah disetujui.<br> Barang Sedang dalam proses pengiriman.<br><br><br>
+        
+        Selalu Berlangganan dengan Kami<br><br><br>
+        TIM NONE | None2021.umrah@gmail.com
+        ');
+
+        if (!$this->email->send()) {
+            session()->setFlashdata('error', 'email tidak terkirim');
+
+            return redirect()->to('/admin/pembayaran');
+        } else {
+            $this->pembayaranModel->save([
+                'id' => $id,
+                'status' => 'dikirim'
+            ]);
+
+            session()->setFlashdata('pesan', 'Email telah terkirim');
+
+            return redirect()->to('/admin/pembayaran');
+        }
     }
 }

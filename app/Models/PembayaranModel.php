@@ -21,13 +21,4 @@ class PembayaranModel extends Model
 
         return $pembayaran;
     }
-    public function sendEmail($id)
-    {
-        $this->join('transaksi', 'transaksi.key = pembayaran.key');
-        $this->where('id', $id);
-        $query = $this->get();
-        $pembayaran = $query->getResultArray();
-
-        return $pembayaran;
-    }
 }
