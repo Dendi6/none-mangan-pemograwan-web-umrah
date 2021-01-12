@@ -29,8 +29,8 @@
                     <label>Tujuan</label>
                     <select class="browser-default" name="ongkir">
                         <option value="" disabled selected>Choose your option</option>
-                        <?php foreach ($ongkir as $o) : ?>
-                            <option value="<?= $o['id'] ?>"><?= $o['nama_kota']; ?></option>
+                        <?php foreach ($kota as $o) : ?>
+                            <option value="<?= $o['id'] ?>"><?= $o['kota']; ?> Harga Ongkir Rp. <?= $o['ongkir']; ?></option>
                         <?php endforeach; ?>
                     </select>
 

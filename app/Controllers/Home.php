@@ -29,4 +29,20 @@ class Home extends BaseController
 
 		return view('beranda/index', $data);
 	}
+	public function about()
+	{
+		$data = [
+			'title' => 'tentang kami'
+		];
+
+		return view('beranda/about/about', $data);
+	}
+	public function waiting()
+	{
+		$data = [
+			'title' => 'waiting'
+		];
+
+		return view('beranda/waiting/index', $data);
+	}
 }

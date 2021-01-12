@@ -35,7 +35,7 @@ class Pesan extends BaseController
         $data = [
             'title' => 'Detail Produk',
             'produk' => $this->produkModel->cari($id_produk),
-            // 'kota' => $this->ongkirModel->findAll()
+            'kota' => $this->ongkirModel->findAll()
         ];
 
         return view('beranda/pesan/jumlah', $data);
@@ -59,7 +59,7 @@ class Pesan extends BaseController
             'id_user' => $user_id,
             'jumlah_pesanan' => $jumlah_pesanan,
             'harga_total' => $harga_total,
-            'ongkir' => $this->request->getVar('ongkir'),
+            'id_ongkir' => $this->request->getVar('ongkir'),
             'alamat' => $this->request->getVar('alamat')
         ]);
 
@@ -99,6 +99,6 @@ class Pesan extends BaseController
             'status' => $this->request->getVar('status')
         ]);
 
-        return redirect()->to('/');
+        return redirect()->to('/home/waiting');
     }
 }

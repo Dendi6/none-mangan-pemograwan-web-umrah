@@ -8,8 +8,15 @@
             <p>Lakukan pembayaran agar pesanan dapat di proses.</p>
             <table class="striped mt-2">
                 <tr>
-                    <td>Total Harga</td>
+                    <td>Harga Produk</td>
                     <td>Rp. <b><?= $transaksi['harga_total']; ?></b></td>
+                </tr>
+                <tr>
+                    <td>Harga Ongkir</td>
+                    <td>Rp. <b><?= $transaksi['ongkir']; ?></b></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="center">Total Harga yang harus di bayar adalah Rp <b><?= $transaksi['ongkir'] + $transaksi['harga_total']; ?></b></td>
                 </tr>
                 <tr>
                     <td>Tranfer ke</td>

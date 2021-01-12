@@ -15,7 +15,12 @@ class PembayaranModel extends Model
 
     public function pembayaran()
     {
-        $this->orderBy('created_at', 'DESC');
+
+        // dd($this->findAll());
+        $this->select('pembayaran.key as kode, nama, bukti, status, kota, alamat, ongkir, pembayaran.id as id');
+        $this->join('transaksi', 'transaksi.key = pembayaran.key');
+        $this->join('ongkir', 'ongkir.id = transaksi.id_ongkir');
+        $this->orderBy('id', 'DESC');
         $query = $this->get();
         $pembayaran = $query->getResultArray();
 

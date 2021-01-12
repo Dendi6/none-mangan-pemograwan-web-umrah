@@ -32,6 +32,8 @@
                     <th scope="col">Bukti</th>
                     <th scope="col">Key</th>
                     <th scope="col">Nama</th>
+                    <th scope="col">Alamat</th>
+                    <th scope="col">Total Harga</th>
                     <th scope="col">Status</th>
                     <th scope="col">Aksi</th>
                 </tr>
@@ -44,13 +46,15 @@
                         <td>
                             <img src="<?= base_url() ?>/images/pembayaran/<?= $p['bukti'] ?>" alt="" srcset="">
                         </td>
-                        <td><?= $p['key']; ?></td>
+                        <td><?= $p['kode']; ?></td>
                         <td><?= $p['nama']; ?></td>
+                        <td><?= $p['kota']; ?> , <?= $p['alamat']; ?></td>
+                        <td><?= $p['ongkir']; ?></td>
                         <td>
                             <span class="badge badge-<?= ($p['status'] == 'dikirim') ? 'success' : 'warning' ?>"><?= $p['status']; ?></span>
                         </td>
                         <td>
-                            <a href="<?= base_url('admin/sendEmail/' . $p['id'] . '/' . $p['key']); ?>" class="btn btn-<?= ($p['status'] == 'dikirim') ? 'secondary' : 'success' ?> <?= ($p['status'] == 'dikirim') ? 'disabled' : '' ?>">
+                            <a href="<?= base_url('admin/sendEmail/' . $p['id'] . '/' . $p['kode']); ?>" class="btn btn-<?= ($p['status'] == 'dikirim') ? 'secondary' : 'success' ?> <?= ($p['status'] == 'dikirim') ? 'disabled' : '' ?>">
                                 Konfirmasi
                             </a>
                         </td>

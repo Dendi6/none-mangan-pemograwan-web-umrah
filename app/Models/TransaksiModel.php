@@ -20,6 +20,7 @@ class TransaksiModel extends Model
             return $this->findAll();
         }
 
+        $this->join('ongkir', 'ongkir.id = transaksi.id_ongkir');
         return $this->where(['key' => $key])->first();
     }
     public function transaksi($id)

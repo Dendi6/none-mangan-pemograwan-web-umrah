@@ -8,6 +8,4 @@ class OngkirModel extends Model
 {
     protected $table      = 'ongkir';
     protected $primaryKey = 'id';
-
-    protected $useTimestamps = true;
 }
