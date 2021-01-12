@@ -26,10 +26,24 @@
                     <input type="hidden" name="harga" value="<?= $produk['harga']; ?>">
                     <!-- end hidden input  -->
 
+                    <label>Tujuan</label>
+                    <select class="browser-default" name="ongkir">
+                        <option value="" disabled selected>Choose your option</option>
+                        <?php foreach ($ongkir as $o) : ?>
+                            <option value="<?= $o['id'] ?>"><?= $o['nama_kota']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">City</i>
+                        <input type="text" name="alamat" id="autocomplete-input" class="autocomplete">
+                        <label for="autocomplete-input">Alamat Lengkap Pemesan</label>
+                    </div>
+
                     <div class="input-field col s12">
                         <i class="material-icons prefix">textsms</i>
                         <input type="text" name="jumlah_pesanan" id="autocomplete-input" class="autocomplete">
-                        <label for="autocomplete-input">jumlah_pesanan</label>
+                        <label for="autocomplete-input">jumlah pesanan</label>
                     </div>
 
                     <div class="center">

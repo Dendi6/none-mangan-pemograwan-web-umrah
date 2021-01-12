@@ -2,13 +2,14 @@
 
 namespace App\Controllers;
 
+use App\Models\OngkirModel;
 use App\Models\PembayaranModel;
 use App\Models\ProdukModel;
 use App\Models\TransaksiModel;
 
 class Pesan extends BaseController
 {
-    protected $produkModel, $transaksiModel, $pembayaranModel;
+    protected $produkModel, $transaksiModel, $pembayaranModel, $ongkirModel;
     protected $session;
     public function __construct()
     {
@@ -16,6 +17,7 @@ class Pesan extends BaseController
         $this->produkModel = new ProdukModel();
         $this->transaksiModel = new TransaksiModel();
         $this->pembayaranModel = new PembayaranModel();
+        $this->ongkirModel = new OngkirModel();
     }
 
     public function index($id)
@@ -32,7 +34,8 @@ class Pesan extends BaseController
     {
         $data = [
             'title' => 'Detail Produk',
-            'produk' => $this->produkModel->cari($id_produk)
+            'produk' => $this->produkModel->cari($id_produk),
+            // 'kota' => $this->ongkirModel->findAll()
         ];
 
         return view('beranda/pesan/jumlah', $data);
@@ -55,7 +58,9 @@ class Pesan extends BaseController
             'id_produk' => $this->request->getVar('id_produk'),
             'id_user' => $user_id,
             'jumlah_pesanan' => $jumlah_pesanan,
-            'harga_total' => $harga_total
+            'harga_total' => $harga_total,
+            'ongkir' => $this->request->getVar('ongkir'),
+            'alamat' => $this->request->getVar('alamat')
         ]);
 
         return redirect()->to('/pesan/pembayaran/' . $key);

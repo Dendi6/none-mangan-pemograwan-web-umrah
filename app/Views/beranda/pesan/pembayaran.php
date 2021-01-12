@@ -13,7 +13,7 @@
                 </tr>
                 <tr>
                     <td>Tranfer ke</td>
-                    <td>Dendi ( BRI ) </td>
+                    <td>Dendi ( BRI ) 0174-01-011473-53-0</td>
                 </tr>
                 <tr>
                     <td colspan="2">note* Jangan Tutup Halaman Ini Sebelum Melakukan Pembayaran.</td>

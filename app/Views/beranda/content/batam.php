@@ -11,7 +11,7 @@
                             <span class="card-title activator grey-text text-darken-4"><?= $tj['nama_produk']; ?><i class="material-icons right">more_vert</i></span>
                             <div class="center mt-2">
                                 <?php if (logged_in()) :  ?>
-                                    <a href="<?= base_url('pesan/' . $tj['id'] . '/' . user()->id); ?>" class="waves-effect waves-light btn">Pesan</a>
+                                    <a href="<?= base_url('pesan/jumlah/' . $tj['id'] . '/' . user()->id); ?>" class="waves-effect waves-light btn">Pesan</a>
                                 <?php else : ?>
                                     <a href="/login" class="waves-effect waves-light btn">Pesan</a>
                                 <?php endif; ?>

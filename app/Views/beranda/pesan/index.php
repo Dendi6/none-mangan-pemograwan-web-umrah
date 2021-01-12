@@ -22,7 +22,7 @@
                         <?php foreach ($transaksi as $tr) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                                <th><?= $tr['key']; ?></th>
+                                <td><?= $tr['key']; ?></td>
                                 <th><?= $tr['nama_produk']; ?></th>
                                 <td><?= $tr['jumlah_pesanan']; ?></td>
                                 <td>

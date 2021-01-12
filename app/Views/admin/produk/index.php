@@ -26,9 +26,20 @@
 <div class="card">
     <div class="card-body">
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
-            Tambah Produk
-        </button>
+        <div class="row">
+            <div class="col-sm-6">
+                <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
+                    Tambah Produk
+                </button>
+            </div>
+            <div class="col-sm-6">
+                <form class="form-inline" action="" method="POST">
+                    <input class="form-control mr-sm-2" name="keyword" id="search" type="search" placeholder="Cari nama produk" aria-label="Search">
+
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">cari</button>
+                </form>
+            </div>
+        </div>
 
         <table class="table">
             <thead>

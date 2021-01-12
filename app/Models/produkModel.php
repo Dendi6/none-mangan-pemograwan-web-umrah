@@ -40,4 +40,16 @@ class ProdukModel extends Model
 
         return $this->where(['id' => $id])->first();
     }
+
+    public function search($keyword)
+    {
+        $this->join('kota', 'kota.id_kota = produk.kota_asal');
+        $this->orderBy('kota_asal', 'ASC');
+        $this->like('nama_produk', $keyword);
+        $this->orlike('nama_kota', $keyword);
+        $query = $this->get();
+        $produk = $query->getResultArray();
+
+        return $produk;
+    }
 }

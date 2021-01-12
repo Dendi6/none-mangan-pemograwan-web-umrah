@@ -24,7 +24,10 @@ class Admin extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Admin NONE'
+            'title' => 'Admin NONE',
+            'user' => $this->userModel->countAllResults(),
+            'produk' => $this->produkModel->countAllResults(),
+            'transaksi' => $this->transaksiModel->countAllResults()
         ];
 
         return view('admin/beranda/index', $data);
@@ -83,13 +86,23 @@ class Admin extends BaseController
     //fungsi produck
     public function produk()
     {
+        $keyword = $this->request->getVar('keyword');
+
+        if ($keyword) {
+            $produk = $this->produkModel->search($keyword);
+        } else {
+            $produk = $this->produkModel->semua();
+        }
+
+
         $data = [
             'title' => 'Produk',
             'kota' => $this->kotaModel->findAll(),
-            'produk' => $this->produkModel->semua()
+            'produk' => $produk
         ];
 
         return view('admin/produk/index', $data);
+        dd($keyword);
     }
     public function saveProduk()
     {
@@ -140,10 +153,44 @@ class Admin extends BaseController
         // dd($this->produkModel->cari($id));
         $data = [
             'title' => 'Edit Produk',
-            'produk' => $this->produkModel->cari($id)
+            'produk' => $this->produkModel->cari($id),
+            'kota' => $this->kotaModel->findAll()
         ];
 
         return view('admin/produk/edit', $data);
+    }
+    public function updateProduk($id)
+    {
+        $fileSampul = $this->request->getFile('sampul');
+
+        //cek gambar, apakah berubah atau gambar lama,
+        if ($fileSampul->getError() == 4) {
+            $namasampul = $this->request->getVar('sampulLama');
+        } else {
+            //generate file random
+            $namasampul = $fileSampul->getRandomName();
+
+            $fileSampul->move('images/produk/', $namasampul);
+
+            //cek jik gambar default
+            if ($this->request->getVar('sampulLama') != "default.jpg") {
+                //hapus gambar
+                unlink('images/produk/' . $this->request->getVar('sampulLama'));
+            }
+        }
+
+        $this->produkModel->save([
+            'id' => $id,
+            'nama_produk' => $this->request->getVar('nama'),
+            'kota_asal' => $this->request->getVar('kota'),
+            'harga' => $this->request->getVar('harga'),
+            'deskripsi' => $this->request->getVar('deskripsi'),
+            'images' => $namasampul
+        ]);
+
+        session()->setFlashdata('pesan', 'produk Berhasil Di Update');
+
+        return redirect()->to('/Admin/produk');
     }
     //akhir fungsi produck
 
@@ -162,7 +209,6 @@ class Admin extends BaseController
         $transaksi = $this->transaksiModel->cari($key);
         $user = $this->userModel->find($transaksi['id_user']);
 
-        // $this->email->setFrom('none2021.umrah@gmail.com', 'None');
         $this->email->setTo($user->email);
         $this->email->setSubject('Transaksi ' . $user->username);
 
