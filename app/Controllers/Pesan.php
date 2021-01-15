@@ -22,7 +22,6 @@ class Pesan extends BaseController
 
     public function index($id)
     {
-
         $data = [
             'title' => 'Pesan',
             'transaksi' => $this->transaksiModel->transaksi($id)
@@ -47,10 +46,9 @@ class Pesan extends BaseController
 
         $user_id = $this->request->getVar('id_user');
         $jumlah_pesanan = $this->request->getVar('jumlah_pesanan');
-        $harga_total = $this->request->getVar('jumlah_pesanan') * $this->request->getVar('harga');
 
         //generate random
-        $random = $user_id . $jumlah_pesanan . $harga_total;
+        $random = $user_id . $jumlah_pesanan;
         $key = random_string($random, 6);
 
         $this->transaksiModel->save([
@@ -58,7 +56,6 @@ class Pesan extends BaseController
             'id_produk' => $this->request->getVar('id_produk'),
             'id_user' => $user_id,
             'jumlah_pesanan' => $jumlah_pesanan,
-            'harga_total' => $harga_total,
             'id_ongkir' => $this->request->getVar('ongkir'),
             'alamat' => $this->request->getVar('alamat')
         ]);
@@ -92,13 +89,16 @@ class Pesan extends BaseController
             $fileSampul->move('images/pembayaran/', $namaSampul);
         }
 
+        $key = $this->request->getVar('key');
+
         $this->pembayaranModel->save([
             'bukti' => $namaSampul,
             'nama' => $this->request->getVar('nama'),
-            'key' => $this->request->getVar('key'),
+            'key' => $key,
+            'totalHarga' => $this->request->getVar('totalHarga'),
             'status' => $this->request->getVar('status')
         ]);
 
-        return redirect()->to('/home/waiting');
+        return redirect()->to('/home/waiting/' . $key);
     }
 }

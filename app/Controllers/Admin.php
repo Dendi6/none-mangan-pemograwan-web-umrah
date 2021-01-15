@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\KotaModel;
+use App\Models\OngkirModel;
 use App\Models\PembayaranModel;
 use App\Models\ProdukModel;
 use App\Models\TransaksiModel;
@@ -11,9 +12,11 @@ use Myth\Auth\Models\UserModel;
 class Admin extends BaseController
 {
     protected $kotaModel, $produkModel, $pembayaranModel, $userModel, $tanskasiModel;
+    protected $ongkirModel;
     public function __construct()
     {
         $this->kotaModel = new KotaModel();
+        $this->ongkirModel = new OngkirModel();
         $this->produkModel = new ProdukModel();
         $this->pembayaranModel = new PembayaranModel();
         $this->transaksiModel = new TransaksiModel();
@@ -33,48 +36,50 @@ class Admin extends BaseController
         return view('admin/beranda/index', $data);
     }
 
-    //berikut adalah daftar fungsi untuk menu kota
+    //berikut adalah daftar fungsi untuk ongkir
     public function kota()
     {
         $data = [
-            'title' => 'kota',
-            'kota' => $this->kotaModel->findAll()
+            'title' => 'Ongkir Perkota',
+            'kota' => $this->ongkirModel->findAll()
         ];
 
         return view('admin/kota/index', $data);
     }
     public function savekota()
     {
-        $this->kotaModel->save([
-            'nama_kota' => $this->request->getVar('nama_kota')
+        $this->ongkirModel->save([
+            'nama_kota' => $this->request->getVar('nama_kota'),
+            'hargaOngkir' => $this->request->getVar('hargaOngkir')
         ]);
 
         session()->setFlashdata('pesan', 'kota berhasil di tambahkan');
 
         return redirect()->to('/admin/kota');
     }
-    public function deletekota($id_kota)
+    public function deletekota($id)
     {
-        $this->kotaModel->delete($id_kota);
+        $this->ongkirModel->delete($id);
 
         session()->setFlashdata('delete', 'Data kota sudah di hapus');
 
         return redirect()->to('/admin/kota');
     }
-    public function editKota($id_kota)
+    public function editKota($id)
     {
         $data = [
-            'title' => 'Edit Kota',
-            'kota' => $this->kotaModel->cari($id_kota)
+            'title' => 'Edit Onkir',
+            'kota' => $this->ongkirModel->cari($id)
         ];
 
         return view('/admin/kota/edit', $data);
     }
-    public function updateKota($id_kota)
+    public function updateKota($id)
     {
-        $this->kotaModel->save([
-            'id_kota' => $id_kota,
-            'nama_kota' => $this->request->getVar('nama_kota')
+        $this->ongkirModel->save([
+            'id' => $id,
+            'nama_kota' => $this->request->getVar('nama_kota'),
+            'hargaOngkir' => $this->request->getVar('hargaOngkir')
         ]);
 
         session()->setFlashdata('pesan', 'Kota Berhasil di Update');
@@ -93,7 +98,6 @@ class Admin extends BaseController
         } else {
             $produk = $this->produkModel->semua();
         }
-
 
         $data = [
             'title' => 'Produk',
@@ -197,6 +201,7 @@ class Admin extends BaseController
     //awal fungsi pembayaran
     public function pembayaran()
     {
+
         $data = [
             'title' => 'Admin Pembayaran',
             'pembayaran' => $this->pembayaranModel->pembayaran()

@@ -35,6 +35,7 @@
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Nama Kota</th>
+                    <th scope="col">Harga Ongkir</th>
                     <th scope="col">Aksi</th>
                 </tr>
             </thead>
@@ -44,11 +45,12 @@
                     <tr>
                         <td><?= $i++; ?></td>
                         <td><?= $k['nama_kota']; ?></td>
+                        <td>Rp. <?= $k['hargaOngkir']; ?></td>
                         <td>
-                            <a href="<?= base_url('admin/editKota/' . $k['id_kota']); ?>" class="btn btn-success">
+                            <a href="<?= base_url('admin/editKota/' . $k['id']); ?>" class="btn btn-success">
                                 <i class="fas fa-edit fa-cog"></i>
                             </a>
-                            <a href="<?= base_url('admin/deletekota/' . $k['id_kota']); ?>" class="btn btn-danger">
+                            <a href="<?= base_url('admin/deletekota/' . $k['id']); ?>" class="btn btn-danger">
                                 <i class="fas fa-trash-alt fa-cog"></i>
                             </a>
                         </td>
@@ -69,6 +71,10 @@
                     <label for="nama_kota">Nama Kota</label>
                     <input type="text" class="form-control" id="nama_kota" name="nama_kota" aria-describedby="emailHelp" required>
                     <small id="emailHelp" class="form-text text-muted">Masukkan nama kota yang terdapat oleh oleh yang akan di sediakan</small>
+                </div>
+                <div class="form-group">
+                    <label for="hargaOngkir">Harga Onkir</label>
+                    <input type="text" class="form-control" id="hargaOngkir" name="hargaOngkir" required>
                 </div>
             </div>
             <div class="modal-footer">

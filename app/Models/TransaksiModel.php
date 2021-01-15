@@ -9,7 +9,7 @@ class TransaksiModel extends Model
     protected $table      = 'transaksi';
     protected $primaryKey = 'id_transaksi';
 
-    protected $allowedFields = ['key', 'id_produk', 'id_user', 'jumlah_pesanan', 'id_ongkir', 'alamat', 'harga_total'];
+    protected $allowedFields = ['key', 'id_produk', 'id_user', 'jumlah_pesanan', 'id_ongkir', 'alamat'];
 
     protected $useTimestamps = true;
 
@@ -20,6 +20,7 @@ class TransaksiModel extends Model
             return $this->findAll();
         }
 
+        $this->join('produk', 'produk.id = transaksi.id_produk');
         $this->join('ongkir', 'ongkir.id = transaksi.id_ongkir');
         return $this->where(['key' => $key])->first();
     }

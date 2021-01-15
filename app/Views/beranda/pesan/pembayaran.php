@@ -9,14 +9,18 @@
             <table class="striped mt-2">
                 <tr>
                     <td>Harga Produk</td>
-                    <td>Rp. <b><?= $transaksi['harga_total']; ?></b></td>
+                    <td>Rp. <b><?= $transaksi['harga']; ?></b></td>
+                </tr>
+                <tr>
+                    <td>Jumlah Pesanan</td>
+                    <td><b><?= $transaksi['jumlah_pesanan']; ?></b></td>
                 </tr>
                 <tr>
                     <td>Harga Ongkir</td>
-                    <td>Rp. <b><?= $transaksi['ongkir']; ?></b></td>
+                    <td>Rp. <b><?= $transaksi['hargaOngkir']; ?></b></td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="center">Total Harga yang harus di bayar adalah Rp <b><?= $transaksi['ongkir'] + $transaksi['harga_total']; ?></b></td>
+                    <td colspan="2" class="center">Total Harga yang harus di bayar adalah Rp. <b><?= ($transaksi['harga'] * $transaksi['jumlah_pesanan']) + $transaksi['hargaOngkir']; ?></b></td>
                 </tr>
                 <tr>
                     <td>Tranfer ke</td>
@@ -40,6 +44,7 @@
         <?= csrf_field(); ?>
         <!-- hidden input  -->
         <input type="hidden" name="key" value="<?= $transaksi['key']; ?>">
+        <input type="hidden" name="totalHarga" value="<?= ($transaksi['harga'] * $transaksi['jumlah_pesanan']) + $transaksi['hargaOngkir']; ?>">
         <input type="hidden" name="status" value="diproses">
         <!-- end hidden input  -->
 

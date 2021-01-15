@@ -23,19 +23,18 @@
                     <!-- hidden input  -->
                     <input type="hidden" name="id_user" value="<?= user()->id; ?>">
                     <input type="hidden" name="id_produk" value="<?= $produk['id']; ?>">
-                    <input type="hidden" name="harga" value="<?= $produk['harga']; ?>">
                     <!-- end hidden input  -->
 
-                    <label>Tujuan</label>
+                    <label>Tujuan Kota</label>
                     <select class="browser-default" name="ongkir">
-                        <option value="" disabled selected>Choose your option</option>
+                        <option value="" disabled selected>silakan pilih</option>
                         <?php foreach ($kota as $o) : ?>
-                            <option value="<?= $o['id'] ?>"><?= $o['kota']; ?> Harga Ongkir Rp. <?= $o['ongkir']; ?></option>
+                            <option value="<?= $o['id'] ?>"><?= $o['nama_kota']; ?>, Harga Ongkir Rp. <?= $o['hargaOngkir']; ?></option>
                         <?php endforeach; ?>
                     </select>
 
                     <div class="input-field col s12">
-                        <i class="material-icons prefix">City</i>
+                        <i class="material-icons prefix">domain</i>
                         <input type="text" name="alamat" id="autocomplete-input" class="autocomplete">
                         <label for="autocomplete-input">Alamat Lengkap Pemesan</label>
                     </div>

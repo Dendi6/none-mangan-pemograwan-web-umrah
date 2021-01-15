@@ -37,10 +37,11 @@ class Home extends BaseController
 
 		return view('beranda/about/about', $data);
 	}
-	public function waiting()
+	public function waiting($key)
 	{
 		$data = [
-			'title' => 'waiting'
+			'title' => 'waiting',
+			'key' => $key
 		];
 
 		return view('beranda/waiting/index', $data);

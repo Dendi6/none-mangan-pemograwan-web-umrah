@@ -48,8 +48,8 @@
                         </td>
                         <td><?= $p['kode']; ?></td>
                         <td><?= $p['nama']; ?></td>
-                        <td><?= $p['kota']; ?> , <?= $p['alamat']; ?></td>
-                        <td><?= $p['ongkir']; ?></td>
+                        <td><?= $p['nama_kota']; ?> , <?= $p['alamat']; ?></td>
+                        <td>Rp. <?= $p['totalHarga']; ?></td>
                         <td>
                             <span class="badge badge-<?= ($p['status'] == 'dikirim') ? 'success' : 'warning' ?>"><?= $p['status']; ?></span>
                         </td>
