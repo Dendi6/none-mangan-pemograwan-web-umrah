@@ -1,8 +1,20 @@
-## NONE
+## None dan Mangan Kepri
 
-None merupakan website yang di kembangkan demi kepentingan tugas akhir P.WEB.
-Tugas di buat oleh Dendi dengan nim 180155201029. Tugas di bangun menggunakan php, dan code igniter 4 sebagai framework.<br>
+Aplikasi merupakan perkembangan dari tugas pemograman WEB. Aplikasi ini untuk tujuan tugas akhir (UAS).<br>
+Spesifikasi yang digunakan adalah :<br>
 
-NONE => OLEH OLEH Kepualauan Riau
+```
+    Bahasa Pemograman   : PHP
+    Framework           : CodeIgniter 4
+    CSS                 : Materialiaze CSS dan Bootstrap
+    Admin menggunakan template SB Admin 2
+```
 
-## Documentasi
+List branch :
+
+1. <a href="https://github.com/Dendi6/None-Mangan-Kepri-PWEB-UMRAH/tree/mangan">Mangan Kepri</a>
+2. <a href="https://github.com/Dendi6/None-Mangan-Kepri-PWEB-UMRAH/tree/none">None Kepri</a>
+
+## Contributor
+
+<img src="src/us.jpeg" width="100%">
