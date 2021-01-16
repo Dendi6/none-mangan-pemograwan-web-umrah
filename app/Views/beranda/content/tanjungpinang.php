@@ -17,9 +17,9 @@
                                 <?php endif; ?>
                                 <!-- untuk button favorite -->
                                 <?php if (logged_in()) :  ?>
-                                    <a href="<?= base_url('favorite/save/' . $tj['id'] . '/' . user()->id); ?>" class="waves-effect waves-light btn"><i class="material-icons">favorite_border</i><?= $tj['jumlah_suka']; ?></a>
+                                    <a href="<?= base_url('favorite/save/' . $tj['id'] . '/' . user()->id); ?>" class="waves-effect waves-light btn"><i class="material-icons">favorite</i><?= $tj['jumlah_suka']; ?></a>
                                 <?php else : ?>
-                                    <a href="<?= base_url('/login'); ?>" class="waves-effect waves-light btn"><i class="material-icons">favorite_border</i><?= $tj['jumlah_suka']; ?></a>
+                                    <a href="<?= base_url('/login'); ?>" class="waves-effect waves-light btn"><i class="material-icons">favorite</i><?= $tj['jumlah_suka']; ?></a>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
         </div>
     <?php endif; ?>
     <?php if ($tanjungpinang == null) : ?>
-        <div class="container">
+        <div class="container mt-2">
             <div class="container">
                 <img src="/images/empty.svg" width="100%" alt="empty">
             </div>

@@ -1,30 +1,35 @@
-<div class="container mt-2">
+<style>
+  .atas{
+    background: radial-gradient(circle at top left, #eccd55, #f3e982);    
+    /*background-color: #eccd55;*/
+    height: 50vn;
+
+  }
+</style>
+<section class="atas">
+
+<div class="container">
     <div class="slider">
         <ul class="slides radius-2 z-depth-3">
             <li>
-                <img src="https://picsum.photos/200/300?random=1" class="radius-2"> <!-- random image -->
+                <img src="images/promosi/lakse.jfif" class="radius-2"> <!-- random image -->
                 <div class="caption center-align">
-                    <h3>This is our big Tagline!</h3>
-                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                    <h3><b>Yuks Makan</b></h3>
+                    <h5 class="light grey-text text-lighten-3">Mangan Kepri solusi untuk anda</h5>
                 </div>
             </li>
             <li>
-                <img src="https://picsum.photos/200/300?random=2" class="radius-2"> <!-- random image -->
+                <img src="images/promosi/ikan-salai.jpg" class="radius-2"> <!-- random image -->
                 <div class="caption left-align">
-                    <h3>Left Aligned Caption</h3>
-                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                    <h3><b>Manjakan Lidah Anda<b></h3>
+                    <h5 class="light grey-text text-lighten-3">Bersama dengan Mangan Kepri</h5>
                 </div>
             </li>
-            <li>
-                <img src="https://picsum.photos/200/300?random=3" class="radius-2"> <!-- random image -->
-                <div class="caption right-align">
-                    <h3>Right Aligned Caption</h3>
-                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                </div>
-            </li>
+            
         </ul>
     </div>
 </div>
+</section>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.slider');

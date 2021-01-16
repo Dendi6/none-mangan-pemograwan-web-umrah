@@ -26,8 +26,9 @@
                                 <th><?= $tr['nama_produk']; ?></th>
                                 <td><?= $tr['jumlah_pesanan']; ?></td>
                                 <td>
-                                    <?= $tr['status']; ?>
+                                   <span class="badge <?= ($tr['status'] == 'dikirim') ? 'green' : 'orange' ?> new" data-badge-caption="<?= $tr['status']; ?>"></span>
                                 </td>
+                                
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>

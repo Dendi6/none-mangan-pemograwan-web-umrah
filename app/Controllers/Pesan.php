@@ -5,10 +5,11 @@ namespace App\Controllers;
 use App\Models\PembayaranModel;
 use App\Models\ProdukModel;
 use App\Models\TransaksiModel;
+use App\Models\OngkirModel;
 
 class Pesan extends BaseController
 {
-    protected $produkModel, $transaksiModel, $pembayaranModel;
+    protected $produkModel, $transaksiModel, $pembayaranModel, $ongkirModel;
     protected $session;
     public function __construct()
     {
@@ -16,22 +17,15 @@ class Pesan extends BaseController
         $this->produkModel = new ProdukModel();
         $this->transaksiModel = new TransaksiModel();
         $this->pembayaranModel = new PembayaranModel();
+         $this->ongkirModel = new OngkirModel();
     }
 
     public function index($id)
     {
-        $db      = \Config\Database::connect();
-        $builder = $db->table('transaksi');
-
-        $builder->select('key, nama_produk, jumlah_pesanan, status');
-        $builder->join('produk', 'produk.id = transaksi.id_produk');
-        $builder->where('id_user', $id);
-        $query = $builder->get();
-        $transaksi = $query->getResultArray();
-
+        
         $data = [
             'title' => 'Pesan',
-            'transaksi' => $transaksi
+            'transaksi' => $this->transaksiModel->transaksi($id)
         ];
 
         return view('beranda/pesan/index', $data);
@@ -40,7 +34,8 @@ class Pesan extends BaseController
     {
         $data = [
             'title' => 'Detail Produk',
-            'produk' => $this->produkModel->cari($id_produk)
+            'produk' => $this->produkModel->cari($id_produk),
+            'kota' => $this->ongkirModel->findAll()
         ];
 
         return view('beranda/pesan/jumlah', $data);
@@ -52,10 +47,9 @@ class Pesan extends BaseController
 
         $user_id = $this->request->getVar('id_user');
         $jumlah_pesanan = $this->request->getVar('jumlah_pesanan');
-        $harga_total = $this->request->getVar('jumlah_pesanan') * $this->request->getVar('harga');
 
         //generate random
-        $random = $user_id . $jumlah_pesanan . $harga_total;
+        $random = $user_id . $jumlah_pesanan;
         $key = random_string($random, 6);
 
         $this->transaksiModel->save([
@@ -63,12 +57,14 @@ class Pesan extends BaseController
             'id_produk' => $this->request->getVar('id_produk'),
             'id_user' => $user_id,
             'jumlah_pesanan' => $jumlah_pesanan,
-            'harga_total' => $harga_total,
-            'status' => $this->request->getVar('status')
+            'id_ongkir' =>$this->request->getVar('ongkir'),
+            'alamat' => $this->request->getVar('alamat')
         ]);
 
         return redirect()->to('/pesan/pembayaran/' . $key);
     }
+
+    //fungsi pembayaran
     public function pembayaran($key)
     {
         $data = [
@@ -94,12 +90,18 @@ class Pesan extends BaseController
             $fileSampul->move('images/pembayaran/', $namaSampul);
         }
 
+        $key=$this->request->getVar('key');
         $this->pembayaranModel->save([
             'bukti' => $namaSampul,
             'nama' => $this->request->getVar('nama'),
-            'key' => $this->request->getVar('key')
+            'key' => $key,
+            'status' => $this->request->getVar('status'),
+            'totalHarga' => $this->request->getVar('totalHarga')
         ]);
 
-        return redirect()->to('/');
+        return redirect()->to('/home/waiting/'.$key);
     }
+
+
+
 }

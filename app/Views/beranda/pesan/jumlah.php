@@ -8,7 +8,7 @@
             <p>Berikut adalah detail yang anda pesan :</p>
             <table class="striped mt-2">
                 <tr>
-                    <td>Nama Oleh Oleh</td>
+                    <td>Nama Makanan</td>
                     <th><?= $produk['nama_produk']; ?></th>
                 </tr>
                 <tr>
@@ -23,15 +23,29 @@
                     <!-- hidden input  -->
                     <input type="hidden" name="id_user" value="<?= user()->id; ?>">
                     <input type="hidden" name="id_produk" value="<?= $produk['id']; ?>">
-                    <input type="hidden" name="harga" value="<?= $produk['harga']; ?>">
-                    <input type="hidden" name="status" value="diproses">
                     <!-- end hidden input  -->
+
+                    <label>Tujuan Kota Anda</label>
+                    <select class="browser-default" name="ongkir">
+                        <option value="" disabled selected>Silahkan Pilih</option>
+                        <?php foreach ($kota as $o) : ?>
+                            <option value="<?= $o['id'] ?>"><?= $o['kota']; ?>, Harga Ongkir Rp. <?= $o['hargaOngkir']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">domain</i>
+                        <input type="text" name="alamat" id="autocomplete-input" class="autocomplete">
+                        <label for="autocomplete-input">Alamat Lengkap Pemesan</label>
+                    </div>
 
                     <div class="input-field col s12">
                         <i class="material-icons prefix">textsms</i>
                         <input type="text" name="jumlah_pesanan" id="autocomplete-input" class="autocomplete">
                         <label for="autocomplete-input">jumlah_pesanan</label>
                     </div>
+
+
 
                     <div class="center">
                         <button type="submit" class="waves-effect waves-light btn">Pesan</button>

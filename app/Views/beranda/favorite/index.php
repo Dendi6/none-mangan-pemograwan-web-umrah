@@ -9,12 +9,12 @@ use App\Controllers\Home;
 <div class="container">
     <div class="card">
         <div class="card-content">
-            <p class="mt-2">Oleh oleh yang aku suka :</p>
+            <p class="mt-2">Makanan yang aku suka :</p>
             <table class="striped">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama Produk</th>
+                        <th>Nama Makanan</th>
                         <th>Suka pada ..</th>
                     </tr>
                 </thead>

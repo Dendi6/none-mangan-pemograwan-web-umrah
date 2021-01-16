@@ -18,15 +18,15 @@ body {
 }
 
 .tabs .tab a:hover {
-  color: #63a541;
+  color: #eccd55;
 }
 
 .tabs .tab a.active {
-  color: #63a541;
+  color: #eccd55;
 }
 
 .tabs .indicator {
-  background-color: #63a541;
+  background-color: #eccd55;
 }
 
 .mt-2 {
@@ -47,14 +47,14 @@ body {
 
 .card .btn {
   border-radius: 10px;
-  background-color: #63a541;
+  background-color: #eccd55;
   box-shadow: none;
 }
 
 .card .btn:hover {
   background-color: white;
   box-shadow: none;
-  color: #63a541;
+  color: #eccd55;
 }
 
 .card .card-image img {

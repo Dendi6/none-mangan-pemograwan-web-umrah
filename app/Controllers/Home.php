@@ -28,16 +28,55 @@ class Home extends BaseController
 
 		$builder->where('kota_asal', 3);
 		$query = $builder->get();
+		$natuna = $query->getResultArray();
+
+		$builder->where('kota_asal', 5);
+		$query = $builder->get();
+		$anambas = $query->getResultArray();
+
+		$builder->where('kota_asal', 6);
+		$query = $builder->get();
 		$lingga = $query->getResultArray();
 
+		$builder->where('kota_asal', 4);
+		$query = $builder->get();
+		$karimun = $query->getResultArray();
+
+
+
 		$data = [
-			'title' => 'None Dendi',
+			'title' => 'Mangan Kepri',
 			'kota' => $this->kotaModel->findAll(),
 			'tanjungpinang' => $tanjungpinang,
 			'batam' => $batam,
-			'lingga' => $lingga
+			'natuna' => $natuna,
+			'anambas' => $anambas,
+			'lingga' => $lingga,
+			'karimun' => $karimun
+
 		];
 
 		return view('beranda/index', $data);
+	}
+
+	public function about()
+	{
+		$data = [
+			'title' => 'tentang kami'
+		];
+
+		return view('beranda/about/about', $data);
+	}
+
+	//fungsi waiting
+	public function waiting($key)
+	{
+		$data = [
+			'title' => 'waiting',
+			'key' => $key
+		];
+
+		return view('beranda/waiting/index', $data);
+		
 	}
 }

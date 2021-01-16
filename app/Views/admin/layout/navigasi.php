@@ -1,6 +1,6 @@
 <style>
     .bg-gradient-primary {
-        background: #63a541;
+      background: radial-gradient(circle at top left, #eccd55, #f3e982);
     }
 </style>
 
@@ -12,7 +12,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">NONE<sup>2020</sup></div>
+        <div class="sidebar-brand-text mx-3">Mangan<sup>Kepri</sup></div>
     </a>
 
     <!-- Divider -->
@@ -42,7 +42,7 @@
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/kota'); ?>">
             <i class="fas fa-fw fa-city"></i>
-            <span>Kota</span></a>
+            <span>Ongkir</span></a>
     </li>
 
     <!-- Nav Item - produk -->
@@ -61,7 +61,7 @@
 
     <!-- Nav Item - pembayaran -->
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="<?= base_url('admin/pembayaran'); ?>">
             <i class="fas fa-fw fa-shopping-cart"></i>
             <span>Pembayaran</span></a>
     </li>

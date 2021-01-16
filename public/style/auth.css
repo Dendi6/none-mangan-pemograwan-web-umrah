@@ -3,14 +3,14 @@
 @import "../adminStyle/css/sb-admin-2.min.css";
 
 .bg-dendi {
-  background-color: #63a541;
+  background-color: #f3e982;
 }
 .btn-primary {
-  background-color: #63a541;
+  background-color: #f3e982;
   border: none;
 }
 .btn-primary:hover {
   background-color: white;
-  color: #63a541;
-  border: 1px solid #63a541;
+  color: #f3e982;
+  border: 1px solid #f3e982;
 }

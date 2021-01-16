@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Admin View untuk Note Website">
-    <meta name="author" content="Dendi 180155201029">
+    <meta name="author" content="Siti Marliana 180155201016">
 
     <title><?= $title; ?></title>
 
